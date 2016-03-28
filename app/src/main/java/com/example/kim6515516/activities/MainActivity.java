@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.example.kim6515516.kakaotest.R;
@@ -24,7 +25,7 @@ import java.util.Observer;
 public class MainActivity extends AppCompatActivity implements Observer, AbsListView.OnScrollListener {
 
     final String TAG = MainActivity.class.getSimpleName();
-    GridView mGridView;
+    ListView mListView;
     ArrayList<GridItem> mGridImgArray;
     CustomGridViewAdapter mCustomGridAdapter;
     private ProgressBar mProgress;
@@ -38,16 +39,16 @@ public class MainActivity extends AppCompatActivity implements Observer, AbsList
         mGridImgArray = new ArrayList<GridItem>();
 
 
-        mGridView = (GridView) findViewById(R.id.gridView1);
+        mListView = (ListView) findViewById(R.id.listView);
         mCustomGridAdapter = new CustomGridViewAdapter(this, R.layout.raw_grid, mGridImgArray);
-        mGridView.setAdapter(mCustomGridAdapter);
+        mListView.setAdapter(mCustomGridAdapter);
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
 
 
         mModel = new Model(mGridImgArray, this);
         mModel.addObserver(this);
         mModel.init();
-        mGridView.setOnScrollListener(this);
+        mListView.setOnScrollListener(this);
 
     }
 

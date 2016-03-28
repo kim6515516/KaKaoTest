@@ -57,8 +57,8 @@ public class Model extends Observable {
         GetImageFromWeb mPostImgDownloadThread = new GetImageFromWeb();
 
         if(mGridImgArray.size() == 0) {
-            mInitImgDownloadThread.execute(0, 10, mGridImgArray);
-            mPostImgDownloadThread.execute(10, 20, mPostImgBuffer);
+            mInitImgDownloadThread.execute(0, 8, mGridImgArray);
+            mPostImgDownloadThread.execute(8, 9, mPostImgBuffer);
         }
     }
 
@@ -90,7 +90,7 @@ public class Model extends Observable {
             notifyObserver(ApplicationConstants.NOTI_CHANGE_DATA);
 
             GetImageFromWeb mImgDownloadThread = new GetImageFromWeb();
-            mImgDownloadThread.execute(lastBufferIndex + 1, lastBufferIndex + 10, mPostImgBuffer);
+            mImgDownloadThread.execute(lastBufferIndex + 1, lastBufferIndex + 5, mPostImgBuffer);
 
         } else
             mLockListView = false;
